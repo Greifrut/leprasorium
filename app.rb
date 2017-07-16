@@ -13,8 +13,14 @@ before do
 	init_db	
 end
 
-configure do 
-	
+configure do
+	init_db 
+	@db.execute 'CREATE TABLE IF NOT EXISTS "Posts" 
+	(
+		"id" INTEGER PRIMARY KEY, 
+		"created_date" DATE, 
+		"content" TEXT
+	)'
 end
 
 get '/' do
