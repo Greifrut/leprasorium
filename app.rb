@@ -50,6 +50,15 @@ post '/new' do
 		created_date
 	) 
 	values ( ?, datetime())', [@content]
-
+	
+	#перенаправление на главную
 	redirect to '/'
+end
+
+#вывод инф о посте
+
+get '/details/:post_id' do
+	post_id = params[:post_id]
+
+	erb "Displaying information for post with id #{post_id}"
 end
