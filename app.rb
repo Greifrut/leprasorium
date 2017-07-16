@@ -24,7 +24,9 @@ configure do
 end
 
 get '/' do
-	erb "Hello! <a href=\"https://github.com/bootstrap-ruby/sinatra-bootstrap\">Original</a> pattern has been modified for <a href=\"http://rubyschool.us/\">Ruby School</a>"			
+	#выбираем список постов из db
+	results = @db.execut 'select * from Posts order by id desc'
+	erb :index
 end
 
 get '/new' do
@@ -38,6 +40,9 @@ post '/new' do
 		@error = 'Type text'
 		return erb :new
 	end
+
+	#сохранене данных в db
+
 	@db.execute 'insert into Posts
 	(
 		content,
