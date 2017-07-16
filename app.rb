@@ -51,5 +51,5 @@ post '/new' do
 	) 
 	values ( ?, datetime())', [@content]
 
-	erb "You tuped #{@content}"
+	redirect to '/'
 end
